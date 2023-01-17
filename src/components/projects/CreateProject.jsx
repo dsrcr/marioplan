@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/state-in-constructor */
 /* eslint-disable import/prefer-default-export */
@@ -5,13 +8,15 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { createProject } from "../../store/actions/projectActions";
 
-export class CreateProject extends Component {
+class CreateProject extends Component {
     state = {};
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log("submit", this.state);
+        this.props.createProject(this.state);
     };
 
     handleChange = (e) => {
@@ -54,3 +59,11 @@ export class CreateProject extends Component {
         );
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createProject: (project) => {
+            return dispatch(createProject(project));
+        },
+    };
+};
+export default connect(null, mapDispatchToProps)(CreateProject);
