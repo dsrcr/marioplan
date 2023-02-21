@@ -10,13 +10,13 @@ body {
     background-position: bottom;
     background-color: #95e8f3;
     min-height: 100%;
-
 }
 
 form {
     padding: 20px;
     margin-top: 60px;
 }
-form button, form h5 {
+form button,
+form h5 {
     margin: 20px 0;
 }
